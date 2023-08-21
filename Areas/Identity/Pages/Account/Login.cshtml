@@ -1,0 +1,72 @@
+﻿@page
+@model LoginModel
+
+
+@*<h1>@ViewData["Title"]</h1>*@
+<section class="">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center  h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5">
+                        <form id="account" method="post">
+                            <h2 class="text-center">Log in</h2>
+                            <hr />
+                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                            <div class="form-outline flex-fill mb-3">
+                                <label asp-for="Input.Email" class="form-label">البريد الالكتروني</label>
+                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="أدحل البريد الالكتروني" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-outline flex-fill mb-3">
+                                <label asp-for="Input.Password" class="form-label">كلمة المرور</label>
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="أدخل كلمة المرور" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="checkbox mb-3">
+                                <label asp-for="Input.RememberMe" class="form-label">
+                                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                                   @* @Html.DisplayNameFor(m => m.Input.RememberMe)*@
+                                   تذكرني؟
+                                </label>
+                            </div>
+                            <div>
+                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                            </div>
+                            <hr class="my-4">
+                            <div class="col-lg-12">
+                                <button type="submit" class="w-100 btn btn-lg btn-primary"
+                                        style="background-color: #dd4b39;font-size:16px">
+                                    تسجيل الدخول باستخدام Google
+                                </button>
+                            </div>
+                            <br />
+                            <div class="col-lg-12">
+                                <button type="submit" class="w-100 btn btn-lg btn-primary"
+                                        style="background-color: #3b5998;font-size:16px">
+                                    تسجيل الدخول باستخدام Facebook
+                                </button>
+                            </div>
+   <br />
+                            <div>
+                                <p>
+                                    <a id="forgot-password" asp-page="./ForgotPassword">نسيت كلمة السر؟</a>
+                                </p>
+                                <p>
+                                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">إنشاء حساب جديد</a>
+                                </p>
+                                <p>
+                                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">إعادة إرسال رمز التفعيل </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
